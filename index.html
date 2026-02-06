@@ -1,99 +1,29 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-<meta charset="UTF-8">
-<title>PSG Penalty – простий тест</title>
-<style>
-  body {
-    margin: 0;
-    background: linear-gradient(135deg, #001f54, #c8102e);
-    color: white;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding: 40px 20px;
-    min-height: 100vh;
-  }
-  h1 { font-size: 2.8em; margin: 20px 0; }
-  button {
-    padding: 16px 36px;
-    font-size: 1.3em;
-    margin: 12px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  .start { background: white; color: #001f54; font-weight: bold; }
-  .kick   { background: #c8102e; color: white; }
-  #game-area { display: none; }
-</style>
+  <meta charset="UTF-8">
+  <title>JS тест</title>
+  <style>
+    body { 
+      margin:0; 
+      background: linear-gradient(135deg, #001f54, #c8102e); 
+      color: white; 
+      font-family: Arial; 
+      text-align: center; 
+      padding-top: 100px; 
+    }
+    h1 { font-size: 3em; }
+  </style>
 </head>
 <body>
 
-<h1>PSG PENALTY SHOOTOUT</h1>
-<p style="font-size: 1.4em; margin: 30px 0;">Натисни кнопку нижче, щоб почати</p>
+<h1>Якщо бачиш цей текст — HTML працює</h1>
 
-<button class="start" onclick="document.getElementById('menu').style.display='none'; document.getElementById('game-area').style.display='block';">
-  ПОЧАТИ ГРУ
-</button>
-
-<div id="game-area">
-
-  <h2>Удар № <span id="shot-nr">1</span> з 5</h2>
-
-  <div style="margin: 40px auto; width: 340px; height: 180px; border: 4px solid white; position: relative; overflow: hidden; background: rgba(255,255,255,0.08);">
-    <div id="keeper" style="position: absolute; bottom: 0; left: 140px; font-size: 60px; transition: left 0.4s;">🧍‍♂️</div>
-    <div id="ball"   style="position: absolute; bottom: 20px; left: 155px; font-size: 40px; opacity: 0; transition: all 0.7s;">⚽</div>
-  </div>
-
-  <button class="kick" onclick="kick('left')">Ліворуч</button>
-  <button class="kick" onclick="kick('center')">Центр</button>
-  <button class="kick" onclick="kick('right')">Праворуч</button>
-
-  <p style="font-size: 1.5em; margin-top: 30px;">
-    Голів: <span id="goals-count">0</span>
-  </p>
-
-</div>
+<button onclick="alert('JavaScript працює!')">Натисни мене</button>
 
 <script>
-let shot = 1;
-let goals = 0;
-
-function kick(side) {
-  const keeperMoves = ['left','center','right'];
-  const keeperChoice = keeperMoves[Math.floor(Math.random()*3)];
-
-  let keeperLeft = '140px';
-  if (keeperChoice === 'left')  keeperLeft = '50px';
-  if (keeperChoice === 'right') keeperLeft = '230px';
-  document.getElementById('keeper').style.left = keeperLeft;
-
-  let ballLeft = '155px';
-  if (side === 'left')  ballLeft = '70px';
-  if (side === 'right') ballLeft = '240px';
-  const ball = document.getElementById('ball');
-  ball.style.left = ballLeft;
-  ball.style.opacity = '1';
-  ball.style.bottom = '120px';
-
-  setTimeout(() => {
-    ball.style.opacity = '0';
-    ball.style.bottom = '20px';
-
-    if (side !== keeperChoice) {
-      goals++;
-      document.getElementById('goals-count').textContent = goals;
-    }
-
-    shot++;
-    if (shot > 5) {
-      alert('Гру закінчено!\nЗабито голів: ' + goals + ' з 5');
-      location.reload(); // перезапуск для простоти
-    } else {
-      document.getElementById('shot-nr').textContent = shot;
-    }
-  }, 800);
-}
+  console.log("Скрипт запустився");
+  document.body.style.background = "linear-gradient(135deg, #006400, #228B22)"; // має стати зеленим
 </script>
 
 </body>
